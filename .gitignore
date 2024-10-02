@@ -1,0 +1,25 @@
+syntax: glob
+
+.gradle
+.idea
+*.log
+*.iml
+*.ipr
+*.iws
+*.ids
+build/*
+plugins/rules-api/build/*
+node_modules/*
+coverage/*
+
+
+syntax: regexp
+
+^target/*$
+^out/*$
+
+# local dev files folder
+.local
+
+# ignore MacOS files
+.DS_Store
