@@ -9,6 +9,7 @@ export const getArgument = (argumentName) => {
 			username = usernameArg.split('=')[1];
 		}
 		console.log(`Welcome to the File Manager, ${username}!`);
+		return username;
 	}  catch (err) {
 		console.error(err.message);
 	}
