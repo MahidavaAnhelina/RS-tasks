@@ -74,7 +74,7 @@ const main = () => {
 					break;
 				}
 				case HASH: {
-					hashRun();
+					hashRun(userArguments);
 					break;
 				}
 				case COMPRESS: {
