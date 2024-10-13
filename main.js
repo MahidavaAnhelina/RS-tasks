@@ -32,8 +32,6 @@ const main = () => {
 		if (validatePrompt(input)) {
 			const [command, userArguments] = getCommandAndParams(input);
 
-			console.log(command, userArguments, 'command, userArguments');
-
 			switch (command) {
 				case UP: {
 					upDirectory(defaultDirectory);

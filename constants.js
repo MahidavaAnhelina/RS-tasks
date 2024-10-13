@@ -12,3 +12,11 @@ export const OS = 'os';
 export const HASH = 'hash';
 export const COMPRESS = 'compress';
 export const DECOMPRESS = 'decompress';
+
+export const EOL_op = '--EOL';
+export const CPUS = '--cpus';
+export const HOMEDIR = '--homedir';
+export const USERNAME = '--username';
+export const ARCHITECTURE = '--architecture';
+
+export const AVAILABLE_OS_OPERATIONS = [EOL_op, CPUS, HOMEDIR, USERNAME, ARCHITECTURE];

@@ -1,6 +1,6 @@
 import { cwd } from "node:process";
-import { createReadStream, existsSync, createWriteStream, unlink } from 'node:fs';
-import {basename, join} from "path";
+import { existsSync, unlink } from 'node:fs';
+import { join } from "path";
 
 export const deleteFile = (userArguments) => {
 	try {
