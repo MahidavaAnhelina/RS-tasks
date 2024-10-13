@@ -18,6 +18,7 @@ import {operationSystemRun} from "./methods/os/operationSystemRun.js";
 import {hashRun} from "./methods/hash/hashRun.js";
 import {compressFile} from "./methods/compressFile.js";
 import {decompressFile} from "./methods/decompressFile.js";
+import { cwd } from "node:process";
 
 const main = () => {
 	const username = getArgument('username');
@@ -78,11 +79,11 @@ const main = () => {
 					break;
 				}
 				case COMPRESS: {
-					compressFile();
+					compressFile(userArguments);
 					break;
 				}
 				case DECOMPRESS: {
-					decompressFile();
+					decompressFile(userArguments);
 					break;
 				}
 			}
@@ -91,7 +92,7 @@ const main = () => {
 			console.error('Invalid input');
 		}
 
-		console.log(`You are currently in ${process.cwd()}`)
+		console.log(`You are currently in ${cwd()}`)
 	});
 
 	rl.on('SIGINT', (input) => {
