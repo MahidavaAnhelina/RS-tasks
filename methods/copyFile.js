@@ -1,6 +1,6 @@
 import { cwd } from "node:process";
 import { createReadStream, existsSync, createWriteStream } from 'node:fs';
-import { join } from "path";
+import { join, basename } from "path";
 
 export const copyFile = (userArguments) => {
 	try {
@@ -12,7 +12,7 @@ export const copyFile = (userArguments) => {
 		}
 
 		const rs = createReadStream(path_to_file);
-		const writeStream = createWriteStream(path_to_new_directory);
+		const writeStream = createWriteStream(path_to_new_directory + '/' + basename(path_to_file));
 
 		rs.pipe(writeStream);
 
