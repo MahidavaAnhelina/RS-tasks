@@ -90,7 +90,7 @@ const main = () => {
 			}
 
 		} else {
-			console.log('Invalid input');
+			console.error('Invalid input');
 		}
 
 		console.log(`You are currently in ${process.cwd()}`)

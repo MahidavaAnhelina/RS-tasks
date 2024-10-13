@@ -4,13 +4,17 @@ import { join } from "path";
 
 export const readFiles = (userArguments) => {
 	try {
-		const rs = fs.createReadStream(join(process.cwd(), userArguments[0]));
+		if (fs.lstatSync(join(process.cwd(), userArguments[0])).isFile()) {
+			const rs = fs.createReadStream(join(process.cwd(), userArguments[0]));
 
-		rs.pipe(process.stdout);
+			rs.pipe(process.stdout);
 
-		rs.on('error', (err) => {
-			console.error('Error reading file:', err.message);
-		});
+			rs.on('error', (err) => {
+				console.error('Error reading file:', err.message);
+			});
+		} else {
+			throw Error('Error with file');
+		}
 	} catch (err) {
 		console.error(err.message);
 	}
