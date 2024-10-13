@@ -1,4 +1,4 @@
-import {ARCHITECTURE, AVAILABLE_OS_OPERATIONS, CPUS, EOL_op, HOMEDIR, USERNAME} from "../../constants.js";
+import {ARCHITECTURE, AVAILABLE_OS_OPERATIONS, CPUS, EOL_op, HOMEDIR, USERNAME} from "../constants.js";
 import { EOL, cpus, homedir, userInfo, arch } from 'node:os';
 
 export const operationSystemRun = (userArguments) => {

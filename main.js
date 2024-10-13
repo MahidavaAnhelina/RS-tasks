@@ -14,12 +14,16 @@ import {renameFile} from "./methods/renameFile.js";
 import {copyFile} from "./methods/copyFile.js";
 import {moveFile} from "./methods/moveFile.js";
 import {deleteFile} from "./methods/deleteFile.js";
-import {operationSystemRun} from "./methods/os/operationSystemRun.js";
+import {operationSystemRun} from "./os/operationSystemRun.js";
 import {hashRun} from "./methods/hash/hashRun.js";
 import {compressFile} from "./methods/compressFile.js";
 import {decompressFile} from "./methods/decompressFile.js";
 import { cwd } from "node:process";
-
+/*
+TODO:
+ 1 - Fix work with path absolut and not
+ 2 - CUt modules
+ */
 const main = () => {
 	const username = getArgument('username');
 	const defaultDirectory = dirname(fileURLToPath(import.meta.url));
