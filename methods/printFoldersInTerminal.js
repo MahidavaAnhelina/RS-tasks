@@ -1,9 +1,10 @@
-import fs from 'node:fs';
+import {readdir} from 'node:fs/promises';
 import process from "node:process";
 
-export const printFoldersInTerminal = () => {
+export const printFoldersInTerminal = async () => {
 	let structData = [];
-	fs.readdirSync(process.cwd(), { withFileTypes: true }).forEach(file => {
+	const data = await readdir(process.cwd(), { withFileTypes: true });
+	data.forEach(file => {
 
 		structData.push({ Name: file.name, Type: file.isDirectory() ? 'directory' : 'file' });
 	});

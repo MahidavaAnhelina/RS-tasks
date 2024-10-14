@@ -29,61 +29,61 @@ const main = () => {
 		output: process.stdout,
 	});
 
-	rl.on('line', (input) => {
+	rl.on('line', async (input) => {
 		if (validatePrompt(input)) {
 			const [command, userArguments] = getCommandAndParams(input);
 
 			switch (command) {
 				case UP: {
-					upDirectory(defaultDirectory);
+					await upDirectory(defaultDirectory);
 					break;
 				}
 				case CD: {
-					openFolder(defaultDirectory, userArguments);
+					await openFolder(defaultDirectory, userArguments);
 					break;
 				}
 				case LS: {
-					printFoldersInTerminal();
+					await printFoldersInTerminal();
 					break;
 				}
 				case CAT: {
-					readFiles(userArguments);
+					await readFiles(userArguments);
 					break;
 				}
 				case ADD: {
-					createEmptyFile(userArguments);
+					await createEmptyFile(userArguments);
 					break;
 				}
 				case RN: {
-					renameFile(userArguments);
+					await renameFile(userArguments);
 					break;
 				}
 				case CP: {
-					copyFile(userArguments);
+					await copyFile(userArguments);
 					break;
 				}
 				case MV: {
-					moveFile(userArguments);
+					await moveFile(userArguments);
 					break;
 				}
 				case RM: {
-					deleteFile(userArguments);
+					await deleteFile(userArguments);
 					break;
 				}
 				case OS: {
-					operationSystemRun(userArguments);
+					await operationSystemRun(userArguments);
 					break;
 				}
 				case HASH: {
-					hashRun(userArguments);
+					await hashRun(userArguments);
 					break;
 				}
 				case COMPRESS: {
-					compressFile(userArguments);
+					await compressFile(userArguments);
 					break;
 				}
 				case DECOMPRESS: {
-					decompressFile(userArguments);
+					await decompressFile(userArguments);
 					break;
 				}
 			}

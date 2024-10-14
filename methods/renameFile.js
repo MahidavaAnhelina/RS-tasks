@@ -1,8 +1,9 @@
 import process from "node:process";
 import fs from 'node:fs';
-import {isAbsolute, join, resolve} from "path";
+import {rename} from 'node:fs/promises';
+import {isAbsolute, resolve} from "path";
 
-export const renameFile = (userArguments) => {
+export const renameFile = async (userArguments) => {
 	try {
 		if (!userArguments[0] || !userArguments[1]) {
 			throw Error('No enough arguments');
@@ -17,7 +18,7 @@ export const renameFile = (userArguments) => {
 			if (fs.existsSync(new_filename) || !fs.existsSync(path_to_file)) {
 				throw Error('FS operation failed');
 			}
-			fs.renameSync(path_to_file,new_filename);
+			await rename(path_to_file,new_filename);
 			console.log('File renamed successfully!');
 		} catch (error) {
 			console.log(error.message);

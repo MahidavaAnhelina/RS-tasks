@@ -1,12 +1,14 @@
 import { lstatSync, createReadStream } from 'node:fs';
+import {lstat} from 'node:fs/promises';
 import { cwd } from "node:process";
-import {isAbsolute, join, resolve} from "path";
+import {isAbsolute, resolve} from "path";
 import { createHash } from 'node:crypto';
 
-export const hashRun = (userArguments) => {
+export const hashRun = async (userArguments) => {
 	try {
 		const fileToRead = isAbsolute(userArguments[0]) ? userArguments[0] : resolve(cwd(), userArguments[0]);
-		if (lstatSync(fileToRead).isFile()) {
+		const stats = await lstat(fileToRead);
+		if (stats.isFile()) {
 			const hash = createHash('sha256');
 			const rs = createReadStream(fileToRead);
 			rs.on('error', err => console.log(err));
