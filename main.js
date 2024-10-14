@@ -19,11 +19,7 @@ import {hashRun} from "./methods/hash/hashRun.js";
 import {compressFile} from "./methods/compressFile.js";
 import {decompressFile} from "./methods/decompressFile.js";
 import { cwd } from "node:process";
-/*
-TODO:
- 1 - Fix work with path absolut and not
- 2 - CUt modules
- */
+
 const main = () => {
 	const username = getArgument('username');
 	const defaultDirectory = dirname(fileURLToPath(import.meta.url));

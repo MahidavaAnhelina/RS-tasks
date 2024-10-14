@@ -1,10 +1,10 @@
 import { cwd } from "node:process";
 import { existsSync, unlink } from 'node:fs';
-import { join } from "path";
+import {isAbsolute, resolve} from "path";
 
 export const deleteFile = (userArguments) => {
 	try {
-		const path_to_file = join(cwd(), userArguments[0]);
+		const path_to_file = isAbsolute(userArguments[0]) ? userArguments[0] : resolve(cwd(), userArguments[0]);
 		if (!existsSync(path_to_file)) {
 			throw Error('File not exists');
 		}

@@ -1,11 +1,12 @@
-import fs from 'node:fs';
+import { lstatSync, createReadStream } from 'node:fs';
 import process from "node:process";
-import { join } from "path";
+import { isAbsolute, resolve } from "path";
 
 export const readFiles = (userArguments) => {
 	try {
-		if (fs.lstatSync(join(process.cwd(), userArguments[0])).isFile()) {
-			const rs = fs.createReadStream(join(process.cwd(), userArguments[0]));
+		const fullPath = isAbsolute(userArguments[0]) ? userArguments[0] : resolve(process.cwd(), userArguments[0]);
+		if (lstatSync(fullPath).isFile()) {
+			const rs = createReadStream(fullPath);
 
 			rs.pipe(process.stdout);
 

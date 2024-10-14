@@ -1,13 +1,16 @@
 import { cwd } from "node:process";
 import { createReadStream, existsSync, createWriteStream } from 'node:fs';
-import { join, basename } from "path";
+import {basename, isAbsolute, resolve} from "path";
 
 export const copyFile = (userArguments) => {
 	try {
-		const path_to_file = join(cwd(), userArguments[0]);
-		const path_to_new_directory = join(cwd(), userArguments[1]);
+		if (!userArguments[0] || !userArguments[1]) {
+			throw Error('No enough arguments');
+		}
+		const path_to_file = isAbsolute(userArguments[0]) ? userArguments[0] : resolve(cwd(), userArguments[0]);
+		const path_to_new_directory = isAbsolute(userArguments[1]) ? userArguments[1] : resolve(cwd(), userArguments[1]);
 
-		if (!existsSync(path_to_file)) {
+		if (!existsSync(path_to_file) || !path_to_new_directory) {
 			throw Error('FS operation failed');
 		}
 

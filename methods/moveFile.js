@@ -1,11 +1,11 @@
 import { cwd } from "node:process";
 import { createReadStream, existsSync, createWriteStream, unlink } from 'node:fs';
-import {basename, join} from "path";
+import {basename, isAbsolute,  resolve} from "path";
 
 export const moveFile = (userArguments) => {
 	try {
-		const path_to_file = join(cwd(), userArguments[0]);
-		const path_to_new_directory = join(cwd(), userArguments[1]);
+		const path_to_file = isAbsolute(userArguments[0]) ? userArguments[0] : resolve(cwd(), userArguments[0]);
+		const path_to_new_directory = isAbsolute(userArguments[1]) ? userArguments[1] : resolve(cwd(), userArguments[1]);
 
 		if (!existsSync(path_to_file) && !existsSync(path_to_new_directory)) {
 			throw Error('FS operation failed');
